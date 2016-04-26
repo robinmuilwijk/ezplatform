@@ -1,0 +1,30 @@
+version: '2'
+services:
+  ezp:
+    build:
+      context: ../../
+      dockerfile: ./docker/ezp/Dockerfile
+    links:
+      - mysql
+      - solr
+    ports:
+     - "80:80"
+    volumes:
+     - ../../:/var/www/html
+
+  mysql:
+    image: mysql
+    ports:
+       - "3306:3306"
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: root
+        MYSQL_USER: ez
+        MYSQL_PASSWORD: AAaa11!!
+
+  solr:
+    build:
+      context: ../../
+      dockerfile: ./docker/solr/Dockerfile
+    ports:
+      - "8983:8983"
