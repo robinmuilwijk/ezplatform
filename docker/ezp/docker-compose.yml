@@ -4,6 +4,7 @@ services:
     build:
       context: ../../
       dockerfile: ./docker/ezp/Dockerfile
+    image: ez/docker/php
     links:
       - mysql
       - solr

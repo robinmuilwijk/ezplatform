@@ -38,4 +38,10 @@ RUN bin/vhost.sh --basedir=/var/www/html \
 RUN a2ensite 000-default
 RUN a2enmod rewrite
 
+RUN apt-get update && apt-get install -y git
+
+# Install composer
+RUN curl -sS https://getcomposer.org/installer | php
+RUN mv composer.phar /usr/local/bin/composer
+
 EXPOSE 80

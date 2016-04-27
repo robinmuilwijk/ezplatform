@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Run PHP through Docker
+
+docker run -i --rm -v "${PWD}":"${PWD}" -v "${HOME}":"${HOME}" -v /tmp/:/tmp/ -w ${PWD} --net=host --sig-proxy=true --pid=host ez/docker/php php "$@"
