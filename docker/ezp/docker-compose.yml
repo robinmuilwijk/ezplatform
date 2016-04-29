@@ -12,6 +12,8 @@ services:
      - "80:80"
     volumes:
      - ../../:/var/www/html
+    extra_hosts:
+     - "localhost:172.20.0.2" # This is not a perfect appproach but needed for the hadrdcoded test hosts in
 
   mysql:
     image: mysql
@@ -26,6 +28,7 @@ services:
   solr:
     build:
       context: ../../
-      dockerfile: ./docker/solr/Dockerfile
+      dockerfile: ./docker/solr6/Dockerfile
+    image: ez/docker/solr
     ports:
       - "8983:8983"
