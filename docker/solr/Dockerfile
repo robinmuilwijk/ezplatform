@@ -12,7 +12,6 @@ RUN tar -xzf solr-4.10.4.tgz && mv solr-4.10.4 solr4 && rm -rf solr-4.10.4.tgz
 
 WORKDIR /solr4
 
-#RUN rm -rf example/solr/collection1/conf/*
 COPY vendor/ezsystems/ezplatform-solr-search-engine/lib/Resources/config/solr/* /solr4/example/solr/collection1/conf/
 
 CMD bin/solr start -f
