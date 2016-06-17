@@ -1,0 +1,20 @@
+version: '2'
+# Redis config, to be appended to prod, prod+dev, ...
+
+services:
+  app:
+    depends_on:
+     - db
+     - redis
+    environment:
+     - SYMFONY_ENV
+     - SYMFONY_DEBUG
+     - DATABASE_USER
+     - DATABASE_PASSWORD
+     - DATABASE_NAME
+     - DATABASE_HOST=db
+     - CUSTOM_CACHE_POOL=singleredis
+     - CACHE_HOST=redis
+
+  redis:
+    image: ${REDIS_IMAGE}
